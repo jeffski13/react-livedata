@@ -10,7 +10,7 @@ npm install react-livedata
 
 # Example 
 
-VIEW MODEL: MyFormViewModel.js
+ViewModel: MyFormViewModel.js
 
 ``` javascript
 import ViewModel, { LiveData } from 'react-livedata';
@@ -35,7 +35,7 @@ export default class MyFormViewModel extends ViewModel {
 }
 ```
 
-REACT COMPONENT
+React Component
 
 ``` javascript
 import MyFormViewModel, { liveData as STATE } from './MyFormViewModel';
@@ -51,7 +51,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-# Writing Unit Tests
+Tests
 
 Using the `react-scripts test`, you can mock out all dependencies and inject them into your ViewModel.
 
