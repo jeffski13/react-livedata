@@ -13,7 +13,7 @@ npm install react-view-model
 VIEW MODEL: MyFormViewModel.js
 
 ``` javascript
-import ViewModel, { LiveData } from 'react-mvvm-view-model';
+import ViewModel, { LiveData } from 'react-livedata';
 //declare your livedata properties and initial/default property values here
 export const liveData = Object.freeze({
     myLiveDataLabel: new LiveData('optionalKeyNameForDebugging', 'Initial string value of my live data');
