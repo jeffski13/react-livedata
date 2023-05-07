@@ -6,7 +6,9 @@ Your JS class can extend the Viewmodel. The constructor needs to be called with 
 
 # Getting Started
 
-npm install react-livedata
+``` bash
+npm install --save react-livedata 
+```
 
 # Example 
 
