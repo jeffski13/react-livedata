@@ -1,6 +1,6 @@
 {
   "name": "react-livedata",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Viewmodel/Livedata Framework For React",
   "main": "index.js",
   "scripts": {
