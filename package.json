@@ -1,6 +1,6 @@
 {
   "name": "react-livedata",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Viewmodel/Livedata Framework For React",
   "main": "index.js",
   "author": "Jeff Szcinski",

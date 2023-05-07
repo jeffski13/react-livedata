@@ -6,7 +6,7 @@ Your JS class can extend the Viewmodel. The constructor needs to be called with 
 
 # Getting Started
 
-npm install react-view-model
+npm install react-livedata
 
 # Example 
 
