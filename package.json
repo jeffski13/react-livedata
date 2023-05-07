@@ -1,7 +1,7 @@
 {
-  "name": "react-mvvm-view-model",
+  "name": "react-livedata",
   "version": "1.0.0",
-  "description": "A Viewmodel Framework For React",
+  "description": "A Viewmodel/Livedata Framework For React",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,6 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeffski13/react-mvvm-view-model"
+    "url": "https://github.com/jeffski13/react-livedata"
   }
 }

@@ -39,7 +39,7 @@ class ViewModel {
         this.reactObj = reactObj;
         for (const [key, liveData] of Object.entries(liveDataInstancesContainer)) {
             if(liveData.key !== undefined) {   
-                this.setLiveState(liveData, liveData.defaultValue)
+                this.setLiveData(liveData, liveData.defaultValue)
             }
           }
     }
@@ -74,7 +74,7 @@ class LiveData {
 /**
  * Mocks ReactComponent state hooks
  */
-export class ReactStateComponentMock {
+class ReactStateComponentMock {
     setState() {
         //no-op for testing
     }
