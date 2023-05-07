@@ -1,0 +1,11 @@
+{
+  "name": "react-mvvm-view-model",
+  "version": "1.0.0",
+  "description": "A Viewmodel Framework For React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff Szcinski",
+  "license": "ISC"
+}
