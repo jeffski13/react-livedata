@@ -1,6 +1,6 @@
 # React ViewModel
 
-This module will allow for MVVM architecture development inside of the React Framework.
+This module will allow for MVVM architecture development inside of the React Framework. This was inspired by benefits seen in the native Android development environment.
 
 Your JS class can extend the Viewmodel. The constructor needs to be called with the react component whose state we are modeling. (see Example section below.)
 
@@ -56,7 +56,7 @@ class MyComponent extends React.Component {
 Using the `react-scripts test`, you can mock out all dependencies and inject them into your ViewModel.
 
 ``` javascript
-import { ReactStateComponentMock } from 'react-mvvm-view-model';
+import { ReactStateComponentMock } from 'react-livedata';
 import MyFormViewModel, { liveData as STATE } from './MyFormViewModel';
 test('FormViewModel Example Test', async () => {
     //Mock your dependency
@@ -76,12 +76,12 @@ test('FormViewModel Example Test', async () => {
 
 # Pros
 
-- Faster test times: No browser (headless or otherwise) needed to run tests
-- Business logic can be taken out of the view layer and down into a dependency injectable class.
+- Faster test times: No browser (headless or otherwise) needed to run tests.
+- Business logic can be taken out of the view layer relocated into a dependency-injectable, testable class.
 
 # Cons
 
-- initial properties based on variables need to be set in the constructor, away from the declaration
+- Initial properties based on variables need to be set in the constructor, away from the declaration. For Example:
 
 ``` javascript
 constructor(reactObj, injectedDepencency) {
