@@ -77,7 +77,7 @@ test('FormViewModel Example Test', async () => {
 # Pros
 
 - Faster test times: No browser (headless or otherwise) needed to run tests.
-- Business logic can be taken out of the view layer relocated into a dependency-injectable, testable class.
+- Business logic can be taken out of the view layer and relocated into a dependency-injectable, testable class.
 
 # Cons
 
