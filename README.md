@@ -1,4 +1,4 @@
-# React ViewModel
+# React with ViewModels and LiveData
 
 This module will allow for MVVM architecture development inside of the React Framework. This was inspired by benefits seen in the native Android development environment.
 
