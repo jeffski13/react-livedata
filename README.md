@@ -1,8 +1,8 @@
 # React with ViewModels and LiveData
 
-This module will allow for MVVM architecture development inside of the React Framework. This was inspired by benefits seen in the native Android development environment.
+This lightweight module will allow for MVVM architecture development inside of the React Framework. This was designed to work with [create-react-app](https://create-react-app.dev/).
 
-Your JS class can extend the Viewmodel. The constructor needs to be called with the react component whose state we are modeling. (see Example section below.)
+The architecture was inspired by benefits seen in the native Android development environment with Viewmodels/LiveData.
 
 # Getting Started
 
@@ -10,7 +10,14 @@ Your JS class can extend the Viewmodel. The constructor needs to be called with 
 npm install --save react-livedata 
 ```
 
-# Example 
+Skip to example section below for code implementation.
+
+Your JS Viewmodel class can extend the [ViewModel](./index.js). Your Viewmodel's constructor needs to be called with the react component whose state we are modeling. Your react component will create a reference to your viewmodel. That reference can be used throughout the lifecycle of the component, i.e. inside the component's render method.
+
+In your tests you can create your same ViewModel class with a mocked react component using the [ReactStateComponentMock](./index.js).
+
+# Example
+
 
 ViewModel: MyFormViewModel.js
 

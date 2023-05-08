@@ -1,6 +1,6 @@
 {
   "name": "react-livedata",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "A Viewmodel/Livedata Framework For React",
   "main": "index.js",
   "author": "Jeff Szcinski",
@@ -8,5 +8,11 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jeffski13/react-livedata"
-  }
+  },
+  "keywords": [
+    "state",
+    "react",
+    "mvvm",
+    "viewmodel"
+  ]
 }
