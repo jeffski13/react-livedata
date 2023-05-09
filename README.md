@@ -26,7 +26,7 @@ import ViewModel, { LiveData } from 'react-livedata';
 //declare your livedata properties and initial/default property values here
 export const liveData = Object.freeze({
     myLiveDataLabel: new LiveData('Initial string value of my live data', 'optionalKeyNameForDebugging'),
-    myLiveDataWithNoOptionalPropertyName: new LiveData(0) //note that when you print your viewmodel
+    myLiveDataWithNoOptionalPropertyName: new LiveData(0)
 });
 
 export default class MyFormViewModel extends ViewModel {
