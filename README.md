@@ -42,22 +42,34 @@ export default class MyFormViewModel extends ViewModel {
         }
         this.myDependency.serviceCallsOrWhateverNeeded(); //showing off injection of dependencies here
     }
+
+    someOtherMethod() {
+        //if you need the value of your optionalKeyNameForDebugging, you can use the js Symbol API:
+        //Example: key/value from local storage:
+        let restorationValue = this.localStorageProvider.getItem(liveData.myLiveDataLabel.key.description);
+    }
 }
 ```
 
 React Component
 
 ``` javascript
-import MyFormViewModel, { liveData as STATE } from './MyFormViewModel';
+import MyFormViewModel, { liveData } from './MyFormViewModel';
 
 class MyComponent extends React.Component {
-    componentDidMount(){
+    constructor(props) {
+        super(props)
+        this.state = {};
         this.myFormViewModel = new MyFormViewModel(this, new DependencyToInject())
-     }
+    }
+
+    render() {
+        return(<>
+            <div>{this.state[liveData.myLiveDataLabel]}</div>
+            <Button onClick={()=>{this.myFormViewModel.onSubmitClicked()}} >
+        </>);
+    }
      
-     ...
-     <div>{this.state[STATE.myLiveDataLabel]}</div>
-     <Button onClick={()=>{this.myFormViewModel.onSubmitClicked()}} >
 }
 ```
 
@@ -67,7 +79,7 @@ Using the `react-scripts test`, you can mock out all dependencies and inject the
 
 ``` javascript
 import { ReactStateComponentMock } from 'react-livedata';
-import MyFormViewModel, { liveData as STATE } from './MyFormViewModel';
+import MyFormViewModel, { liveData } from './MyFormViewModel';
 test('FormViewModel Example Test', async () => {
     //Mock your dependency
     const mockedDependencyToInject = {
@@ -76,11 +88,11 @@ test('FormViewModel Example Test', async () => {
         }
     }
     const formViewModel = new MyFormViewModel(new ReactStateComponentMock(), mockedDependencyToInject);
-    expect(formViewModel.getLiveData(STATE.myLiveDataLabel)).toBe('Initial string value of my live data');
+    expect(formViewModel.getLiveData(liveData.myLiveDataLabel)).toBe('Initial string value of my live data');
     
     //click submit (mocking user interactions)
     formViewModel.onSubmitClicked();
-    expect(formViewModel.getLiveData(STATE.myLiveDataLabel)).toBe('modified value');
+    expect(formViewModel.getLiveData(liveData.myLiveDataLabel)).toBe('modified value');
 });
 ```
 
