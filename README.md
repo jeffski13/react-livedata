@@ -16,8 +16,24 @@ Your JS Viewmodel class can extend the [ViewModel](./index.js). Your Viewmodel's
 
 In your tests you can create your same ViewModel class with a mocked react component using the [ReactStateComponentMock](./index.js).
 
-# Example
+Minimum code boiler plate for ViewModel: 
 
+``` javascript
+import ViewModel, { LiveData } from 'react-livedata';
+
+export const liveData = Object.freeze({
+    myLiveData: new LiveData('initval'),
+});
+
+export default class MyFormViewModel extends ViewModel {
+    constructor(reactObj) {
+        super(reactObj, liveData);
+    }
+}
+```
+
+
+# Example
 
 ViewModel: MyFormViewModel.js
 
@@ -30,9 +46,9 @@ export const liveData = Object.freeze({
 });
 
 export default class MyFormViewModel extends ViewModel {
-    constructor(reactObj, injectedDepencency) {
+    constructor(reactObj, injectedLocalStorageDepencency) {
         super(reactObj, liveData);
-        this.myDependency = injectedDepencency;
+        this.localStorageDependency = injectedLocalStorageDepencency;
     }
 
     onSubmitClicked() {
@@ -40,13 +56,13 @@ export default class MyFormViewModel extends ViewModel {
         if(this.getLiveData(liveData.myLiveDataLabel) === 'Initial string value of my live data') {
             console.log('this wont print becuase you updated :)')
         }
-        this.myDependency.serviceCallsOrWhateverNeeded(); //showing off injection of dependencies here
+        this.localStorageDependency.setItem('someLocalStorageKey', 'Some Local Storage Value'); //showing off injection of dependencies here
     }
 
     someOtherMethod() {
         //if you need the value of your optionalKeyNameForDebugging, you can use the js Symbol API:
         //Example: key/value from local storage:
-        let restorationValue = this.localStorageProvider.getItem(liveData.myLiveDataLabel.key.description);
+        let restorationValue = this.localStorageDependency.getItem(liveData.myLiveDataLabel.key.description);
     }
 }
 ```
@@ -54,13 +70,14 @@ export default class MyFormViewModel extends ViewModel {
 React Component
 
 ``` javascript
+import React from 'react';
 import MyFormViewModel, { liveData } from './MyFormViewModel';
 
 class MyComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {};
-        this.myFormViewModel = new MyFormViewModel(this, new DependencyToInject())
+        this.myFormViewModel = new MyFormViewModel(this, localStorage);
     }
 
     render() {
@@ -82,12 +99,22 @@ import { ReactStateComponentMock } from 'react-livedata';
 import MyFormViewModel, { liveData } from './MyFormViewModel';
 test('FormViewModel Example Test', async () => {
     //Mock your dependency
-    const mockedDependencyToInject = {
-        serviceCallsOrWhateverNeeded: () => {
-            console.log('mocked service call');
+    class LocalStorageProviderMock extends LocalStorageProvider {
+        constructor() {
+            super()
+            this.localStorage = {};
+        }
+
+        getItem(key) {
+            return this.localStorage[key];
+        }
+        
+        setItem(key, value) {
+            this.localStorage[key] = value;
         }
     }
-    const formViewModel = new MyFormViewModel(new ReactStateComponentMock(), mockedDependencyToInject);
+    
+    const formViewModel = new MyFormViewModel(new ReactStateComponentMock(), new LocalStorageProviderMock());
     expect(formViewModel.getLiveData(liveData.myLiveDataLabel)).toBe('Initial string value of my live data');
     
     //click submit (mocking user interactions)
